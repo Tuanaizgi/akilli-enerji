@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -37,7 +40,7 @@ jobs:
 
     - name: APK derle
       run: |
-        buildozer android debug
+        buildozer android debug 2>&1
 
     - name: APK'yı kaydet
       uses: actions/upload-artifact@v4
